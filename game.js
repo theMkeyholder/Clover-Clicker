@@ -47,15 +47,22 @@ var game = {
   }
 };
 var AFPS;
+function commaNumber(x) {
+    x = x.toString();
+    var pattern = /(-?\d+)(\d{3})/;
+    while (pattern.test(x))
+        x = x.replace(pattern, "$1,$2");
+    return x;
+}
 setInterval(function() {
 AFPS = Math.round(game.state.C1 + (game.state.C3.prod/game.state.C3.interval * game.state.C3.amount) + (game.state.C4.prod/game.state.C4.interval * game.state.C4.amount));
 }, 20);
 function UpdateAFPS(){
-	document.getElementById('AverageFlowerPerSecond').innerHTML = AFPS;
+	document.getElementById('AverageFlowerPerSecond').innerHTML = commaNumber(AFPS);
 }
 function MakeFlowers(amt){
   game.state.flower += amt;
-  document.getElementById("flower").innerHTML = game.state.flower;
+  document.getElementById("flower").innerHTML = commaNumber(game.state.flower);
 }
 setInterval(function() { // Interval function for 1-leaf clovers
 	MakeFlowers(game.state.C1.amount);
@@ -68,15 +75,15 @@ setInterval(function(){ // Interval function for 4-leaf clovers!
 }, game.state.C4.interval*1000);
 setInterval(function(){
 	UpdateAFPS();
-	document.getElementById("C1s").innerHTML = game.state.C1.amount;
-	document.getElementById("C1cost").innerHTML = game.state.C1.cost;
-	document.getElementById("C1prod").innerHTML = game.state.C1.prod;
-	document.getElementById("C3s").innerHTML = game.state.C3.amount;
-	document.getElementById("C3cost").innerHTML = game.state.C3.cost;
-	document.getElementById("C3prod").innerHTML = game.state.C3.prod;
-	document.getElementById("C4s").innerHTML = game.state.C4.amount;
-	document.getElementById("C4cost").innerHTML = game.state.C4.cost;
-	document.getElementById("C4prod").innerHTML = game.state.C4.prod;
+	document.getElementById("C1s").innerHTML = commaNumber(game.state.C1.amount);
+	document.getElementById("C1cost").innerHTML = commaNumber(game.state.C1.cost);
+	document.getElementById("C1prod").innerHTML = commaNumber(game.state.C1.prod);
+	document.getElementById("C3s").innerHTML = commaNumber(game.state.C3.amount);
+	document.getElementById("C3cost").innerHTML = commaNumber(game.state.C3.cost);
+	document.getElementById("C3prod").innerHTML = commaNumber(game.state.C3.prod);
+	document.getElementById("C4s").innerHTML = commaNumber(game.state.C4.amount);
+	document.getElementById("C4cost").innerHTML = commaNumber(game.state.C4.cost);
+	document.getElementById("C4prod").innerHTML = commaNumber(game.state.C4.prod);
 }, 40);
 function save() {
   localStorage.cc = btoa(JSON.stringify(game));
