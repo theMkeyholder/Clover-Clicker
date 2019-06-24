@@ -68,12 +68,15 @@ setInterval(function(){ // Interval function for 4-leaf clovers!
 }, game.state.C4.interval*1000);
 setInterval(function(){
 	UpdateAFPS();
-	document.getElementById("C1s").innterHTML = game.state.C1.amount;
-	document.getElementById("C1cost").innterHTML = game.state.C1.cost;
-	document.getElementById("C3s").innterHTML = game.state.C3.amount;
-	document.getElementById("C3cost").innterHTML = game.state.C3.cost;
-	document.getElementById("C4s").innterHTML = game.state.C4.amount;
-	document.getElementById("C4cost").innterHTML = game.state.C4.cost;
+	document.getElementById("C1s").innerHTML = game.state.C1.amount;
+	document.getElementById("C1cost").innerHTML = game.state.C1.cost;
+	document.getElementById("C1prod").innerHTML = game.state.C1.prod;
+	document.getElementById("C3s").innerHTML = game.state.C3.amount;
+	document.getElementById("C3cost").innerHTML = game.state.C3.cost;
+	document.getElementById("C3prod").innerHTML = game.state.C3.prod;
+	document.getElementById("C4s").innerHTML = game.state.C4.amount;
+	document.getElementById("C4cost").innerHTML = game.state.C4.cost;
+	document.getElementById("C4prod").innerHTML = game.state.C4.prod;
 }, 40);
 function save() {
   localStorage.cc = btoa(JSON.stringify(game));
