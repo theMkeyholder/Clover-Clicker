@@ -3,7 +3,7 @@ var game = {
 	flower: 0,
 	C1: {
 		amount: 0,
-		cost: 50,
+		cost: 40,
 		prod: 1,
 		interval: 1,
 		buy: function() {
@@ -11,7 +11,7 @@ var game = {
 			if(game.state.flower >= this.cost) {
 				game.state.flower-=this.cost;
 				this.amount++;
-				this.cost = Math.pow(1.03,this.amount)*50;
+				this.cost = Math.pow(1.03,this.amount)*40;
 			}
 		}
 	},
