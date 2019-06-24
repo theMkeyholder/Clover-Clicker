@@ -1,58 +1,58 @@
 var game = {
-  state: {
-  flower: 0,
-  C1: {
-    amount: 0,
-    cost: 50,
+	state: {
+	flower: 0,
+	C1: {
+		amount: 0,
+		cost: 50,
 		prod: 1,
 		interval: 1,
 		buy: function() {
-    if(game.state.flower < this.cost) return 0;
-    if(game.state.flower >= this.cost) {
-      game.state.flower-=this.cost;
-      this.amount++;
-			this.cost = Math.pow(1.03,this.amount)*50;
-    }
+			if(game.state.flower < this.cost) return 0;
+			if(game.state.flower >= this.cost) {
+				game.state.flower-=this.cost;
+				this.amount++;
+				this.cost = Math.pow(1.03,this.amount)*50;
+			}
 		}
 	},
-  C3: {
-    amount: 0,
-    cost: 2000,
-		prod: 50,
-		interval: 3,
-		buy: function() {
-    if(game.state.flower < this.cost) return 0;
-    if(game.state.flower >= this.cost) {
-      game.state.flower-=this.cost;
-      this.amount++;
-			this.cost = Math.pow(1.05,this.amount)*2000;
-		}
-		}
-	},
-	C4: {
-		amount: 0,
-		cost: 2e6,
-		prod: 3e5,
-		interval: 4,
-		buy: function() {
-    if(game.state.flower < this.cost) return 0;
-    if(game.state.flower >= this.cost) {
-      game.state.flower-=this.cost;
-      this.amount++;
-			this.cost = Math.pow(1.1,this.amount)*2000;
-    }
-		}
-	},
-  tap: 1
-  }
+		C3: {
+			amount: 0,
+			cost: 2000,
+			prod: 50,
+			interval: 3,
+			buy: function() {
+				if(game.state.flower < this.cost) return 0;
+				if(game.state.flower >= this.cost) {
+					game.state.flower-=this.cost;
+					this.amount++;
+					this.cost = Math.pow(1.05,this.amount)*2000;
+				}
+			}
+		},
+		C4: {
+			amount: 0,
+			cost: 2e6,
+			prod: 3e5,
+			interval: 4,
+			buy: function() {
+				if(game.state.flower < this.cost) return 0;
+				if(game.state.flower >= this.cost) {
+					game.state.flower-=this.cost;
+					this.amount++;
+					this.cost = Math.pow(1.1,this.amount)*2000;
+				}
+			}
+		},
+		tap: 1
+	}
 };
 var AFPS;
 function commaNumber(x) {
-    x = x.toString();
-    var pattern = /(-?\d+)(\d{3})/;
-    while (pattern.test(x))
-        x = x.replace(pattern, "$1,$2");
-    return x;
+	x = x.toString();
+	var pattern = /(-?\d+)(\d{3})/;
+	while (pattern.test(x))
+		x = x.replace(pattern, "$1,$2");
+	return x;
 }
 setInterval(function() {
 AFPS = Math.round(game.state.C1.amount + (game.state.C3.prod/game.state.C3.interval * game.state.C3.amount) + (game.state.C4.prod/game.state.C4.interval * game.state.C4.amount))
@@ -61,8 +61,8 @@ function UpdateAFPS(){
 	document.getElementById('AverageFlowerPerSecond').innerHTML = commaNumber(AFPS);
 }
 function MakeFlowers(amt){
-  game.state.flower += amt;
-  document.getElementById("flower").innerHTML = commaNumber(game.state.flower);
+	game.state.flower += amt;
+	document.getElementById("flower").innerHTML = commaNumber(game.state.flower);
 }
 setInterval(function() { // Interval function for 1-leaf clovers
 	MakeFlowers(game.state.C1.amount);
@@ -86,18 +86,18 @@ setInterval(function(){
 	document.getElementById("C4prod").innerHTML = commaNumber(Math.round(game.state.C4.prod));
 }, 40);
 function save() {
-  localStorage.cc = btoa(JSON.stringify(game));
+	localStorage.cc = btoa(JSON.stringify(game));
 }
 function load() {
-  if(!localStorage.cc) return;
-  game = JSON.parse(atob(localStorage.cc));
-  transformToDecimal(game);
+	if(!localStorage.cc) return;
+	game = JSON.parse(atob(localStorage.cc));
+	transformToDecimal(game);
 }
 function transformToDecimal(object) { 
-  for(var i in object) {
-   if(typeof(object[i]) == "string" && !isNaN(new Decimal(object[i]).mag)) object[i] = new Decimal(object[i]); 
-   if(typeof(object[i]) == "object") transformToDecimal(object[i]);
-  }
+	for(var i in object) {
+		if(typeof(object[i]) == "string" && !isNaN(new Decimal(object[i]).mag)) object[i] = new Decimal(object[i]); 
+		if(typeof(object[i]) == "object") transformToDecimal(object[i]);
+	}
 }
 load();
 setInterval(function(){
