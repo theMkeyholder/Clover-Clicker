@@ -75,15 +75,15 @@ setInterval(function(){ // Interval function for 4-leaf clovers!
 }, game.state.C4.interval*1000);
 setInterval(function(){
 	UpdateAFPS();
-	document.getElementById("C1s").innerHTML = commaNumber(game.state.C1.amount);
-	document.getElementById("C1cost").innerHTML = commaNumber(game.state.C1.cost);
-	document.getElementById("C1prod").innerHTML = commaNumber(game.state.C1.prod);
-	document.getElementById("C3s").innerHTML = commaNumber(game.state.C3.amount);
-	document.getElementById("C3cost").innerHTML = commaNumber(game.state.C3.cost);
-	document.getElementById("C3prod").innerHTML = commaNumber(game.state.C3.prod);
-	document.getElementById("C4s").innerHTML = commaNumber(game.state.C4.amount);
-	document.getElementById("C4cost").innerHTML = commaNumber(game.state.C4.cost);
-	document.getElementById("C4prod").innerHTML = commaNumber(game.state.C4.prod);
+	document.getElementById("C1s").innerHTML = commaNumber(Math.round(game.state.C1.amount));
+	document.getElementById("C1cost").innerHTML = commaNumber(Math.round(game.state.C1.cost));
+	document.getElementById("C1prod").innerHTML = commaNumber(Math.round(game.state.C1.prod));
+	document.getElementById("C3s").innerHTML = commaNumber(Math.round(game.state.C3.amount));
+	document.getElementById("C3cost").innerHTML = commaNumber(Math.round(game.state.C3.cost));
+	document.getElementById("C3prod").innerHTML = commaNumber(Math.round(game.state.C3.prod));
+	document.getElementById("C4s").innerHTML = commaNumber(Math.round(game.state.C4.amount));
+	document.getElementById("C4cost").innerHTML = commaNumber(Math.round(game.state.C4.cost));
+	document.getElementById("C4prod").innerHTML = commaNumber(Math.round(game.state.C4.prod));
 }, 40);
 function save() {
   localStorage.cc = btoa(JSON.stringify(game));
@@ -96,7 +96,7 @@ function load() {
 function transformToDecimal(object) { 
   for(var i in object) {
    if(typeof(object[i]) == "string" && !isNaN(new Decimal(object[i]).mag)) object[i] = new Decimal(object[i]); 
-   if(typeof(object[i]) == "object") transformToDecimal(object[i]) ;
+   if(typeof(object[i]) == "object") transformToDecimal(object[i]);
   }
 }
 load();
