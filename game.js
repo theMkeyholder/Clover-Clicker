@@ -62,7 +62,7 @@ function UpdateAFPS(){
 }
 function MakeFlowers(amt){
 	game.state.flower += amt;
-	document.getElementById("flower").innerHTML = commaNumber(game.state.flower);
+	document.getElementById("flower").innerHTML = commaNumber(Math.round(game.state.flower));
 }
 setInterval(function() { // Interval function for 1-leaf clovers
 	MakeFlowers(game.state.C1.amount);
