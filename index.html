@@ -5,24 +5,32 @@
 	</head>
 	<body>
 		Flowers: <span id="flower">0</span>
-		<br />
-		<button onclick="MakeFlowersOutOfThinAir(game.state.tap)">Click for a Flower!</button>
-		<br />
-    Flowers per click: <span id="tap">1</span><br />
+		<br>
+		<button onclick="MakeFlowers(game.state.tap)">Click for a Flower!</button>
+		<br>
+    Flowers per click: <span id="tap">1</span><br>
 		Flowers per second: <span id="AverageFlowerPerSecond">0</span>
-		<br /><br />
-		<button onclick="buyC1()">Buy a 1 Leaf Clover</button> <span id="Clover1Power">1</span> flowers per One Leaf Clover every second
-		<br />
-		One Leaf Clovers: <span id="Clover1">0</span>
-		<br />
-		 Cost: <span id="Clover1Cost">50</span> flowers<br /><br />
-		<button onclick="buyC3()">Buy a 3 Leaf Clover</button> <span id="Clover3Power">50</span> flowers per Three Leaf Clover every three seconds
-		<br />
-		Three Leaf Clovers: <span id="Clover3">0</span>
-		<br />
-		 Cost: <span id="Clover3Cost">2000</span> flowers
-		<br /><br /><br />
+		<br><br>
+		<button onclick="game.state.G1.buy()">Buy a 1 Leaf Clover</button> <span id="C1prod">1</span> flowers per One Leaf Clover every second
+		<br>
+		One Leaf Clovers: <span id="C1s">0</span>
+		<br>
+		 Cost: <span id="C1cost">50</span> flowers
+		<br><br>
+		<button onclick="game.state.G3.buy()">Buy a 3 Leaf Clover</button> <span id="C3prod">50</span> flowers per Three Leaf Clover every three seconds
+		<br>
+		Three Leaf Clovers: <span id="C3s">0</span>
+		<br>
+		Cost: <span id="C3cost">2,000</span> flowers
+		<br><br>
+		<button onclick="game.state.G4.buy()">Buy a 4 Leaf Clover</button> <span id="C4prod">300,000</span> flowers per Four Leaf Clover every four seconds
+		<br>
+		Four Leaf Clovers: <span id="C4s">0</span>
+		<br>
+		Cost: <span id="C4cost">2,000,000</span> flowers
+		<br><br><br>
     Manual Save:  <button type='button' id='input_save' onclick = "save()">save</button></br>
     Manual Load:  <button type='button' id='input_load' onclick = "load()">load</button>
     <script type="text/javascript" src="game.js"></script>
 	</body>
+</html>
