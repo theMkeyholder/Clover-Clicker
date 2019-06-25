@@ -39,7 +39,7 @@ var game = {
 				if(game.state.flower >= this.cost) {
 					game.state.flower-=this.cost;
 					this.amount++;
-					this.cost = Math.pow(1.1,this.amount)*2000;
+					this.cost = Math.pow(1.1,this.amount)*2e6;
 				}
 			}
 		},
