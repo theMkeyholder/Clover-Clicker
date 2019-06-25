@@ -45,7 +45,9 @@ var game = {
 		},
 		tap: 1
 	},
-	upgradeString: "000"
+	upgradeArray: [1337,0,0,0],
+	buttonArray: [420,"<button type='button' onclick='u1()'>Make More Flowers<br>Costs 1,000 flowers<br>F/C: 1->10</button><br>","<button type='button' onclick='u2()'>Bigger Leaves 1<br>Costs 500 flowers<br>1 Leaf Clovers' production is doubled.</button><br>",""],
+	strArray: [69,"<button type='button' onclick='u1()'>Make More Flowers<br>Costs 1,000 flowers<br>F/C: 1->10</button><br>","<button type='button' onclick='u2()'>Bigger Leaves 1<br>Costs 500 flowers<br>1 Leaf Clovers' production is doubled.</button><br>","<button type='button' onclick='u3()'>Bigger Leaves 2<br>Costs 500,000 flowers<br>1 Leaf Clovers' production is doubled.</button><br>"]
 };
 var AFPS;
 function commaNumber(x) {
@@ -74,6 +76,31 @@ setInterval(function(){ // Interval function for 3-leaf clovers
 setInterval(function(){ // Interval function for 4-leaf clovers!
 	MakeFlowers(game.state.C4.prod * game.state.C4.amount);
 }, game.state.C4.interval*1000);
+function u1(){
+	if(game.state.flower >= 1000 && game.upgradeArray[1] == 0){
+		game.state.flower-=1000;
+		game.state.tap = 10;
+		game.upgradeArray[1] = 1;
+		game.buttonArray[1] = "";
+	}
+}
+function u2(){
+	if(game.state.flower >= 500 && game.upgradeArray[2] == 0){
+		game.state.flower-=500;
+		game.state.C1.prod*=2;
+		game.upgradeArray[2] = 1;
+		game.buttonArray[2] = "";
+		game.buttonArray[3] = game.strArray[3];
+	}
+}
+function u3(){
+	if(game.state.flower >= 500000 && game.upgradeArray[3] == 0){
+		game.state.flower-=500000;
+		game.state.C1.prod*=2;
+		game.upgradeArray[3] = 1;
+		game.buttonArray[3] = "";
+	}
+}
 setInterval(function(){
 	UpdateAFPS();
 	document.getElementById("C1s").innerHTML = commaNumber(Math.round(game.state.C1.amount));
@@ -85,6 +112,7 @@ setInterval(function(){
 	document.getElementById("C4s").innerHTML = commaNumber(Math.round(game.state.C4.amount));
 	document.getElementById("C4cost").innerHTML = commaNumber(Math.round(game.state.C4.cost));
 	document.getElementById("C4prod").innerHTML = commaNumber(Math.round(game.state.C4.prod));
+	document.getElementById("Upgrades").innerHTML = game.buttonArray[1]+game.buttonArray[2]+game.buttonArray[3];
 }, 40);
 function save() {
 	localStorage.cc = btoa(JSON.stringify(game));
