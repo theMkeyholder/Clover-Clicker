@@ -44,7 +44,8 @@ var game = {
 			}
 		},
 		tap: 1
-	}
+	},
+	upgradeString = "000";
 };
 var AFPS;
 function commaNumber(x) {
