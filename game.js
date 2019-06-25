@@ -32,7 +32,7 @@ var game = {
 		C4: {
 			amount: 0,
 			cost: 2e6,
-			prod: 3e5,
+			prod: 2e5,
 			interval: 4,
 			buy: function() {
 				if(game.state.flower < this.cost) return 0;
