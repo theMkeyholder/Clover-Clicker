@@ -1,28 +1,40 @@
 <html>
 	<title>Clover Clicker</title>
 	<head>
-		<link rel="stylesheet" type="text/css" href="interface.css" />
+		<link rel="stylesheet" type="text/css" href="graphics.css">
 	</head>
 	<body>
 		Flowers: <span id="flower">0</span>
-		<br />
-		<button onclick="MakeFlowersOutOfThinAir(game.state.tap)">Click for a Flower!</button>
-		<br />
-    Flowers per click: <span id="tap">1</span><br />
+		<br>
+		<button onclick="MakeFlowers(game.state.tap)">Click for a Flower!</button>
+		<br>
+    Flowers per click: <span id="tap">1</span><br>
 		Flowers per second: <span id="AverageFlowerPerSecond">0</span>
-		<br /><br />
-		<button onclick="buyC1()">Buy a 1 Leaf Clover</button> <span id="Clover1Power">1</span> flowers per One Leaf Clover every second
-		<br />
-		One Leaf Clovers: <span id="Clover1">0</span>
-		<br />
-		 Cost: <span id="Clover1Cost">50</span> flowers<br /><br />
-		<button onclick="buyC3()">Buy a 3 Leaf Clover</button> <span id="Clover3Power">50</span> flowers per Three Leaf Clover every three seconds
-		<br />
-		Three Leaf Clovers: <span id="Clover3">0</span>
-		<br />
-		 Cost: <span id="Clover3Cost">2000</span> flowers
-		<br /><br /><br />
-    Manual Save:  <button type='button' id='input_save' onclick = "save()">save</button></br>
+		<br><br>
+		<button onclick="game.state.C1.buy()">Buy a 1 Leaf Clover</button> <span id="C1prod">1</span> flowers per One Leaf Clover every second
+		<br>
+		One Leaf Clovers: <span id="C1s">0</span>
+		<br>
+		 Cost: <span id="C1cost">40</span> flowers
+		<br><br>
+		<button onclick="game.state.C3.buy()">Buy a 3 Leaf Clover</button> <span id="C3prod">50</span> flowers per Three Leaf Clover every three seconds
+		<br>
+		Three Leaf Clovers: <span id="C3s">0</span>
+		<br>
+		Cost: <span id="C3cost">2,000</span> flowers
+		<br><br>
+		<button onclick="game.state.C4.buy()">Buy a 4 Leaf Clover</button> <span id="C4prod">300,000</span> flowers per Four Leaf Clover every four seconds
+		<br>
+		Four Leaf Clovers: <span id="C4s">0</span>
+		<br>
+		Cost: <span id="C4cost">2,000,000</span> flowers
+		<br><br>
+		<b>Upgrades</b>
+		<span id="Upgrades"><br>
+			<button type='button' onclick = "u1()">Make More Flowers<br>Costs 1,000 flowers<br>F/C: 1->10</button>
+		<br><br>
+    Manual Save:  <button type='button' id='input_save' onclick = "save()">save</button><br>
     Manual Load:  <button type='button' id='input_load' onclick = "load()">load</button>
     <script type="text/javascript" src="game.js"></script>
 	</body>
+</html>

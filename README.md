@@ -1,9 +1,3 @@
 # Clover-Clicker
 
-A clicker game I am making so I can get better at coding and make better games!
-This will still be a decent game, like cookie clicker, with a prestige system and all.
-
-
-Developer and tester: SuperSpruce
-
-Co-developer: Falling Mountain
+Forked off of SuperSpruce (and FallingMountain) to here. Trying to make v0.4 a reality before 2020.
